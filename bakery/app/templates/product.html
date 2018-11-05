@@ -1,0 +1,74 @@
+{% if g.user.isEmployee %}
+  {% extends "version_administrator.html" %}
+{% else %}
+  {% extends "version_customer.html" %}
+{% endif %}
+
+{% block content %}
+  <!-- This section generates the generic pages for the products, displays name and price --> 
+  <!--     IF Not authorized -->
+
+    {% if not g.user.is_authenticated %}
+
+      <img align="right" src="/static/images/prod-{{product['ProductID']}}.jpg">
+      <h3>{{product["Name"]}}</h3>
+      <p>${{product["Price"]}}</p>
+
+  <!--     IF Customer -->
+
+
+    {% elif g.user.is_authenticated and not g.user.isEmployee%}
+
+      <img align="right" src="/static/images/prod-{{product['ProductID']}}.jpg">
+      <h3>{{product["Name"]}}</h3>
+      <p>${{product["Price"]}}</p>
+      <p> <a href = "/product/{{product['ProductID']}}/order_product"> Order Item </a>
+
+
+
+<!--     IF EMPLOYEE -->
+  	{% elif g.user.isEmployee %}
+
+    <h3>Edit product</h3>
+
+        With any product you are able to change it's recipe. We store the recipes history in order
+        to return to some of them later when it appears that the previous one were better then the current.<br>
+        <br>
+        Default photo is uploaded automatically. You don't need to upload it for every product.<br>
+
+        <form action="" method="post" >
+          {{ form.hidden_tag() }}
+
+            <img align="right" src="/static/images/prod-{{product['ProductID']}}.jpg">
+
+          <h4>Product Info</h4>
+        <table border="0" >
+         <tr><td>ProductID:</td><td>{{product["ProductID"]}}</td></tr>
+          <tr><td>Name: </td><td>{{form.pName}}</td></tr>
+          <tr><td>Price: </td><td>${{form.price}}</td></tr>
+          <tr><td>Load photo: </td><td>{{form.imageFile}}</td></tr>
+        </table>
+          <h4>Current Recipe</h4>
+        <table border="0" >
+      		<tr><td>Title: </td><td>{{form.title}}</td></tr>
+          <tr><td>Text: </td><td>{{form.text(cols=50,rows=10)}} </td></tr>
+          <tr><td>Active: </td><td> {{form.isActive}} </td></tr>
+          <tr><td>Product: </td><td> {{form.productID}}</td></tr>
+        </table>
+        <p><input type="submit" value="Update"></p>
+      </form>
+
+      <h4>Archived Recipes</h4>
+
+      <table border="1">
+      <th>Title</th><th>Text</th>
+      {% for recipe in recipes %}
+      <tr>
+          <td>{{recipe["Title"]}} </td>
+          <td>{{recipe["Text"]}} </td>
+      </tr>
+      {% endfor %}
+      </table>
+
+	{% endif %}
+{% endblock %}

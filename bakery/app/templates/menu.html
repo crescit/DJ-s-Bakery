@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3> Menu </h3>
+
+<div id="content">
+
+    {% block menu %}{% endblock %}
+
+    <div id="workarea">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <div id="messages">
+                <ul id="shrink">
+                {% for message in messages %}
+                    <li>{{ message }} </li>
+                {% endfor %}
+                </ul>
+                </div>
+              {% endif %}
+            {% endwith %}
+
+        {% block content %}{% endblock %}
+
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{% extends "version_administrator.html" %}
+
+{% block content %}
+	<h3>Clients orders</h3>
+    
+    Here are the orders of our clients sorted by date order, new first. <br><br>
+    <table border="1">
+    <th>Order ID</th><th>Created</th><th>Customer</th><th>Employee</th><th>Sum</th><th>Status</th>
+    {% for message in messages %} 
+    <tr>
+        <td>{{message.orderid}} </td>
+        <td>{{message.created}} </td>
+        <td>{{message.customer}} </td>
+        <td>{{message.employee}} </td>
+        <td>{{message.sum}} </td>
+        <td>{% if message.closed == 1 %} 
+                closed
+            {% else %}  
+                open
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+{% endblock %}

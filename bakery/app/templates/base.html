@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<metda http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% if title %}
+    <title>{{ title }} - Bakery DB App</title>
+    {% else %}
+    <title>Bakery DB App</title>
+    {% endif %}
+<link href="/static/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+<br>
+<h1>DJ's Bakery</h1>
+<h3>The CS564 Project</h3>
+</div>
+
+<div id="content">
+{% block menu %}{% endblock %}
+
+<div id="workarea">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <div id="messages">
+            <ul id="shrink">
+           {% for message in messages %}
+              <li>{{ message }} </li>
+            {% endfor %}
+          </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+    {% block content %}{% endblock %}
+
+</div>
+</div>
+
+<div id="footer">
+    <div class="footermenu">
+       <a href="#">Administration</a> |
+       <a href="#">About</a> |
+       <a href="#">Privacy Policy</a>
+    </div>
+
+</div>
+</body>
+</html>

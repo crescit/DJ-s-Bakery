@@ -1,0 +1,21 @@
+{% extends "version_administrator.html" %}
+
+{% block content %}
+	<h3> Employees </h3>
+    You may think that open passwords and SSN is not a secure way to store your data.<br>
+    You are right, but this is just a testing example. We will never allow that in a real system.<br><br>
+    
+    <table border="1">
+    <th>Employee ID</th><th>Name</th><th>SSN</th><th>Password</th>
+    {% for message in messages %} 
+    <tr>
+        <td>{{message.EmployeeID}} </td>
+        <td>{{message.Name}} </td>
+        <td>{{message.SSN}} </td>
+        <td>{{message.Password}} </td>
+    </tr>
+    {% endfor %}
+    </table>
+    
+{% endblock %}
+

@@ -1,0 +1,33 @@
+<!-- extend from base layout -->
+{% extends "version_customer.html" %}
+
+{% block content %}
+  <h1>Sign In</h1>
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+      
+      If you are a customer, try <br>
+      username = SophiaJones@gmail.com<br>
+      password = SophiaJones<br>
+      <br>
+      Are you an employee? Try<br>
+      username = 100<br>
+      password = SophiaFisher<br>
+
+      <p>
+          Username:<br>
+          <input id="username" name="username" size="20" type="text" value=""><br>
+          {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+
+          Password:<br>
+          <input id="password" name="password" size="20" type="password" value=""><br>
+          {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br>
+      </p>
+
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+{% endblock %}

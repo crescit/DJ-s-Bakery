@@ -1,0 +1,137 @@
+body{
+color:#000;
+font-family:Arial, Helvetica, sans-serif;
+background-color:#fdf5e6;
+}
+
+#header {
+    width:100%;
+    height:140px;
+    position:relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: gray;
+    background-image:url(/static/header.jpg);
+    background-position:bottom center;
+    background-size: 100% auto;
+}
+
+#header h1{
+    color: #fff;
+    margin-left: 20px;
+}
+#header h3{
+    color: #fff;
+    margin-left: 20px;
+}
+
+#content{
+    position:relative;
+    width:100%;
+    background-color: white;
+    clear: right;
+    overflow:auto;
+    border: 1px solid #d1bea8;
+}
+
+#menudisclaimer{
+    position:relative;
+    width:80%;
+    margin-left: 10px;
+}
+
+#menu{
+    position:relative;
+    width:20%;
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: #faebd7;
+}
+#menu ul {
+    list-style-type: none;
+}
+
+#workarea{
+    position:relative;
+    float: left;
+    clear: right;
+    left: 10px;
+    width:75%;
+    margin-top: 10px;
+    max-height: -100px; 
+}
+
+#footer {
+    width:100%;
+    margin-top: 10px;
+    height:50px;
+    position:relative;
+    background-color: #4b3621;
+    color:#fff;
+    border: 1px solid #333;
+}
+
+#footer .footermenu {
+    width:100%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 80%;
+}
+
+#footer a {
+    color:#fff;
+}
+
+#footer a:hover {
+    color:#ccc;
+}
+
+a {
+    color: #306030;
+    text-decoration:none;
+}
+
+a:hover {
+    color: #d2691e;
+    text-decoration:none;
+}
+
+
+#shrink {
+  max-height: 200px;
+}
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #9ab973;
+    padding: 5px;
+}
+
+th {
+    background-color: #cbeeac;
+    font-size: 90%;
+}
+
+#dbresult {
+    width:100%;
+    margin-top: 10px;
+    background-color: #f4f0ec;
+    color:#000;
+}
+
+#dbinner {
+    padding: 10px;
+    position:relative;
+}
+
+#dbresult table {
+    border-collapse: collapse;
+}
+
+#dbresult td, th {
+    border: 1px solid #a9ba9d;
+    padding-left: 5px;
+}

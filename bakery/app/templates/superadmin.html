@@ -1,0 +1,57 @@
+{% extends "version_administrator.html" %}
+
+{% block content %}
+	<h3>Database management</h3>
+    As a super administrator, you are allowed to do everything with our database,
+    including usage of SELECT, UPDATE and INSERT statements. Please, use your 
+    power with consciousness and good intentions.
+    <div id="dbresult">
+    <div id="dbinner">
+    <table>
+        {% if dbresult %}
+            {% for row in dbresult %}
+                <tr>
+                {% for col in row %}
+                    <td><pre>{{ col }}</pre></td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+
+        {% else %}
+            <tr><td>
+            <pre>[Please, type your query string...]</pre>
+            </td></tr>
+        {% endif %}
+    </table>
+    </div>
+    </div>
+    <br>
+    Choose our top queries:<br><br>
+        <script>
+            qlinks = '<a onClick="insertQuery(1);return false;" href="">List all tables</a> | ' +
+                    '<a onClick="insertQuery(2);return false;" href="">Show all DB schema</a> | ' +
+                    '<a onClick="insertQuery(3);return false;" href="">List columns of Product table</a> | '+
+                    '<a onClick="insertQuery(4);return false;" href="">Show last 10 orders</a> <br>' +
+                    '<a onClick="insertQuery(5);return false;" href="">Show SQLite version</a>'
+            document.write(qlinks);
+            function insertQuery( q ) {
+                showQuery = 'empty';
+                if (q == 1){showQuery = 'SELECT name FROM sqlite_master where type=\'table\';';}
+                if (q == 2){showQuery = 'SELECT sql FROM sqlite_master where type=\'table\';';}
+                if (q == 3){showQuery = 'PRAGMA table_info(Product);';}
+                if (q == 4){showQuery = 'SELECT * FROM _Order ORDER BY Created DESC LIMIT 10;';}
+                if (q == 5){showQuery = 'SELECT sqlite_version();';}
+                document.getElementById("query").value = showQuery;
+            }
+        </script>
+
+    <br>
+      <form action="" method="post" name="dbquery">
+
+      {{ form.hidden_tag() }}<br>
+      Or type your query: <br> {{ form.query(cols=70,rows=2) }}<br><br>
+      <input type="submit" value="Send">
+  </form>
+    <br><br>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <div id="menu"><br>
+        {% if g.user.is_authenticated %}
+
+         <div id="menudisclaimer">
+            Hi {{ g.user.name }}!
+            ( <a href="/logout">Exit</a> )
+        </div>
+        <ul>
+            <li><a href="/search">Home</a></li> <br>
+            <li><a href="/myorder">Show your orders</a></li> <br>
+        </ul>
+        <hr>
+        {% else %}
+        <ul>
+            <li><a href="/search">Home</a></li> <br>
+        </ul>
+         <div id="menudisclaimer">
+            Are you a customer?
+        </div>
+        <ul>
+            <li><a href="/myorder">Show your order</a></li>
+        </ul>
+        <br>
+        <div id="menudisclaimer">
+            Are you an employee?
+        </div>
+        <ul>
+            <li><a href="/login">Login</a></li>
+
+        </ul>
+        {% endif %}
+
+    </div>
+{% endblock %}

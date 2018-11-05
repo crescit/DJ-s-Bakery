@@ -1,0 +1,38 @@
+{% if g.user.isEmployee %}
+  {% extends "version_administrator.html" %}
+{% else %}
+  {% extends "version_customer.html" %}
+{% endif %}
+
+{% block content %}
+  <h3> Add product in bulk </h3>
+
+
+<!--     IF EMPLOYEE -->    
+  	{% if g.user.isEmployee %}
+
+        Use this form to add a bunch of new products at once according to the following format:<br>
+        <pre>[Product name]|[product price]</pre>
+        For example:<br>
+<pre>
+Seasonal Cheesecake|2.30
+Coffee Cake|4.61
+Rugalach|4.52
+Chocolate Baby Bundt Cake|3.63
+Maple Pecan Bar|7.19
+Fudge Brownie|5.52
+</pre>
+        
+        <form action="" method="post" >
+          {{ form.hidden_tag() }}
+
+            {{form.bulk(cols=40,rows=30)}} <br><br>
+
+        <input type="submit" value="Add products">
+      </form>
+
+        <br><br>
+
+	{% endif %}
+{% endblock %}
+

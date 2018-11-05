@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <div id="menu"><br>
+        {% if g.user.is_authenticated %} 
+         <div id="menudisclaimer">
+            Hi {{ g.user.name }}!
+            ( <a href="/logout">Exit</a> )
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+        <hr>
+        {% endif %}
+         <div id="menudisclaimer">
+            <b>Management panel</b><br><br>
+            Choose any of these items to view and edit data.
+        </div>
+        <ul>
+            <li><a href="/orders">View orders</a></li>
+            <li><a href="/employee">Employers</a></li>
+            <li><a href="/search">Update Products</a></li>
+            <li><a href="/add_product">Add Product</a></li>
+            <li><a href="/add_bulk">Add Products in Bulk</a></li>
+            
+        </ul>
+        <hr>
+        <div id="menudisclaimer">
+            Direct database access.<br>
+            Use carefully!
+        </div>
+        <ul>
+            <li><a href="/superadmin">Database management</a></li>
+        </ul>
+
+        
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% if g.user.isEmployee %}
+  {% extends "version_administrator.html" %}
+{% else %}
+  {% extends "version_customer.html" %}
+{% endif %}
+
+
+{% block content %}
+
+    {% if g.user.isEmployee %}
+     <h3>Product information management</h3>
+        As an employee, you are allowed to change information about any product in our bakery.<br>
+        Choose any item to start.<br>
+    {% else %}
+  <h3>Find you favorite cookie in our bakery!</h3>
+    We try to do all of our best to bring you hot and tasty cakes, breads and other products directly from our factory.<br>
+    Please, use the form below to search a product that you are interested in.<br>
+    If you are ready to buy, please login and add any of our delicious items to your order.<br>
+    If you are sure that you are an employee, use the same login form to get access to the internal data.<br>
+    {% endif %}
+    
+    
+    
+  <form action="" method="post" name="search">
+      
+      {{ form.hidden_tag() }}
+      
+      <br>
+      <br>Search: {{ form.searchField(size=40) }} <br>
+      <br>Search by Category: {{ form.category }} |  Maxium Price: {{ form.price }} <br>
+      <br>
+      <input type="submit" value="Search"></p>
+
+      
+  </form>
+
+    <ul>
+    	{% for message in messages %} 
+        <li> <a href="/product/{{message.productID}}"> {{message.name}} costs ${{message.price}}</a></li>
+    	{% endfor %}
+	</ul>
+{% endblock %}
+
+

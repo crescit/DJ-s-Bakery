@@ -1,0 +1,27 @@
+{% extends "version_customer.html" %}
+
+{% block content %}
+  <h3> My Orders </h3>
+
+    <table border="1">
+    <th>Order ID</th><th>Created</th><th>Customer</th><th>Employee</th><th>Sum</th><th>Status</th>
+    {% for message in messages %} 
+    <tr>
+        <td>{{message.orderid}} </td>
+        <td>{{message.created}} </td>
+        <td>{{message.customer}} </td>
+        <td>{{message.employee}} </td>
+        <td>{{message.sum}} </td>
+        <td>{% if message.closed == 1 %} 
+                closed
+            {% else %}  
+                open
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}
+
+
